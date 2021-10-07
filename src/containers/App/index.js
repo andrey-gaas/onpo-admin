@@ -1,8 +1,12 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <h1>HELLO WORLD</h1>
+    <Switch>
+      <Route exact path="/" render={() => <h1>MAIN PAGE</h1>} />
+      <Route path="/page2" render={() => <h1>PAGE 2</h1>} />
+    </Switch>
   );
 }
 
