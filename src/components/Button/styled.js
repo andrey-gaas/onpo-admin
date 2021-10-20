@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import {
-  TABLET,
+  //TABLET,
   FS_SM,
-  FS_MD,
+  //FS_MD,
   BLACK_COLOR,
   PRIMARY_COLOR,
   BR_SM,
