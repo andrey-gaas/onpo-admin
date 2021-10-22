@@ -50,3 +50,7 @@ export const Title = styled.h2`
     font-size: ${FS_LG};
   }
 `;
+
+export const Grow = styled.div`
+  flex-grow: 1;
+`;
