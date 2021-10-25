@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route } from 'react-router-dom';
-import { NavBar  } from '../../components';
+import { NavBar, DataTablet  } from '../../components';
 import { Root, ContainerAdmin } from './styles';
 
 function Admin(){
@@ -14,6 +14,11 @@ function Admin(){
           <Route path="/admin/teachers"  render={() => <h1>teachers</h1>} />
           <Route path="/admin/reviews"  render={() => <h1>review</h1>} />
         </Switch>
+        <DataTablet 
+          setting={{ id: "ID", name:"Имя", button:'Кнопка'}} 
+          content={[{id:1,name:'Нуждин А. И.'},{id:2,name:'Гаас А. А.'},{id:3,name:'Сергеев А. А.'}]}
+          width={"50"}
+        />
       </ContainerAdmin>
     </Root>
   )

@@ -17,6 +17,5 @@ export const ContainerAdmin = styled.div`
   flex-shrink: 1;
   background-color: #eeeeee;
   flex-grow: 0;
-  height: 1000px;
   width: 100%;
 `
