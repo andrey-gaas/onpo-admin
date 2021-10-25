@@ -3,4 +3,8 @@ body, html {
   padding: 0;
   background-color: #F9F3F3;
   font-family: 'Gotham', sans-serif;
+  height: 100%;
+}
+*{
+  box-sizing: border-box;
 }

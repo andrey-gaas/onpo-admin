@@ -1,5 +1,6 @@
 // COLORS
 export const PRIMARY_COLOR    = '#FF165D';
+export const WHITE_COLOR    = '#FFFFFF';
 export const BLACK_COLOR      = '#252A34';
 export const BACKGROUND_COLOR = '#F9F3F3';
 export const ACCENT_COLOR     = '#3EC1D';
