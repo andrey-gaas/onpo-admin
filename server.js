@@ -12,6 +12,7 @@ app.use(express.json({ exptended: true }));
 ONPO_db.connect();
 
 // ROUTES
+app.use('/api/reviews', require('./routes/reviews'));
 
 if (process.env.NODE_ENV === 'production') {
   app.use('/', express.static(path.join(__dirname, 'build')));

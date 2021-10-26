@@ -1,9 +1,10 @@
-const { reviews } = require('../repositories/ONPO');
+const ONPO = require('../repositories/ONPO');
 
 class ReviewsApi {
   static get(filter = {}) {
     return new Promise((resolve, reject) => {
-      reviews
+      ONPO  
+        .reviews
         .find(filter)
         .toArray((error, reviews) => {
           if (error) {
@@ -17,12 +18,12 @@ class ReviewsApi {
 
   static async getOne(id) {
     try {
-      const review = await reviews.findOne({ id });
+      const review = await ONPO.reviews.findOne({ id });
       return review;
     } catch(error) {
       console.log('Error getting comment');
       console.log(error.message);
-      return new Error({ error: error.message });
+      throw new Error(error.message);
     }
   }
 }
