@@ -18,7 +18,7 @@ export const reviewsAddFail = error => ({ type: actions.REVIEW_ADD_FAIL, error }
 // EDIT REVIEW
 export const reviewsEdit = () => ({ type: actions.REVIEW_EDIT });
 export const reviewsEditSuccess = data => ({ type: actions.REVIEW_EDIT_SUCCESS, data });
-export const reviewsEditFail = error => ({ type: actions.REVIEWS_EDIT_FAIL, error });
+export const reviewsEditFail = error => ({ type: actions.REVIEW_EDIT_FAIL, error });
 
 // REMOVE REVIEW
 export const reviewsRemove = () => ({ type: actions.REVIEW_REMOVE });
