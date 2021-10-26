@@ -21,22 +21,3 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.listen(PORT, () => console.log(`Server started on port: ${PORT}`));
-
-
-/* async function start() {
-  try {
-    await mongoose.connect(config.get('mongoURI'), {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
-    });
-
-    app.listen(PORT, () => console.log(`Server started on port: ${PORT}`));
-  } catch(e) {
-    console.error('Server naebnulsa', e);
-    process.exit();
-  }
-}
-
-start(); */
