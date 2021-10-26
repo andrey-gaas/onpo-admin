@@ -7,7 +7,7 @@ export const Root = styled.main`
   height: 100%;;
 `;
 
-export const Loading = styled.div`
+export const Text = styled.div`
   margin-top: 50px;
   align-self: center;
   font-size: ${FS_LGM};
@@ -19,4 +19,9 @@ export const Error = styled.div`
   align-self: center;
   font-size: ${FS_LGM};
   color: ${PRIMARY_COLOR};
+`;
+
+export const List = styled.div`
+  margin: 20px auto;
+  width: 1200px;
 `;

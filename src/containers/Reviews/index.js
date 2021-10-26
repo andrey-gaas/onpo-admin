@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { reviewsFetch } from '../../store/AC/reviews';
-import { Root, Loading, Error } from './styles';
+import { Root, Text, Error, List } from './styles';
+import Review from './review';
 
 function Reviews({ reviewsFetch, reviews }) {
   const { list, error } = reviews;
+
+  console.log(list);
 
   useEffect(() => {
     reviewsFetch();
@@ -15,14 +18,25 @@ function Reviews({ reviewsFetch, reviews }) {
   return (
     <Root>
       {
-        list === null &&
-        error === null &&
-        <Loading>Загрузка...</Loading>
+        list === null && error === null &&
+        <Text>Загрузка...</Text>
       }
 
       {
         error !== null &&
         <Error>Ошибка загрузки списка отзывов</Error>
+      }
+
+      {
+        list && list.lingth === 0 &&
+        <Text>Список отзывов пуст</Text>
+      }
+
+      {
+        list && list.length &&
+        <List>
+          {list.map(item => <Review key={item.id} {...item} />)}
+        </List>
       }
     </Root>
   );
