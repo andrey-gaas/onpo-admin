@@ -6,7 +6,9 @@ const ONPO_db = require('./repositories/ONPO');
 const app = express();
 const PORT = config.get('port');
 
-app.use(express.json({ exptended: true }));
+app.use(express.static('public'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // DATABASE
 ONPO_db.connect();
