@@ -122,3 +122,9 @@ export const EditingButtons = styled.div`
   display: flex;
   margin-top: 20px;
 `;
+
+export const Error = styled.h6`
+  margin: 10px 0;
+  font-size: ${FS_MD};
+  color: ${PRIMARY_COLOR};
+`;

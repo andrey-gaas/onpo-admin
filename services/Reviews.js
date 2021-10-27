@@ -56,7 +56,7 @@ class ReviewsApi {
 
   static async update(id, changes) {
     try {
-      const review = await ONPO.reviews.findOneAndUpdate({ id }, { $set: changes });
+      const review = await ONPO.reviews.findOneAndUpdate({ id }, { $set: changes }, { returnDocument: "after" });
       return review;
     } catch(error) {
       console.log('Error updating comment');

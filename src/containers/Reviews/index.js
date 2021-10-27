@@ -9,8 +9,6 @@ import Review from './review';
 function Reviews({ reviewsFetch, reviews }) {
   const { list, error } = reviews;
 
-  console.log(list);
-
   useEffect(() => {
     reviewsFetch();
   }, [reviewsFetch]);
@@ -18,12 +16,12 @@ function Reviews({ reviewsFetch, reviews }) {
   return (
     <Root>
       {
-        list === null && error === null &&
+        list === null && !error.list &&
         <Text>Загрузка...</Text>
       }
 
       {
-        error !== null &&
+        error.list &&
         <Error>Ошибка загрузки списка отзывов</Error>
       }
 
@@ -35,7 +33,7 @@ function Reviews({ reviewsFetch, reviews }) {
       {
         list && list.length &&
         <List>
-          {list.map(item => <Review key={item.id} {...item} />)}
+          {list.map(item => <Review key={item.id} {...item} error={error[item.id]} />)}
         </List>
       }
     </Root>
