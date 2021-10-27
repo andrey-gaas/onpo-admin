@@ -1,9 +1,6 @@
 import { combineReducers } from 'redux';
-
-function reducer(store = {test: '123'}) {
-  return store;
-}
+import reviews from './reviews';
 
 export default combineReducers({
-  reducer,
+  reviews,
 });
