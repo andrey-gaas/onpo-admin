@@ -1,26 +1,23 @@
 import React from "react";
 import { Switch, Route } from 'react-router-dom';
 import Reviews from '../Reviews';
-import { NavBar, DataTablet  } from '../../components';
+import { NavBar } from '../../components';
 import { Root, ContainerAdmin } from './styles';
+import Users from "../Users"
 
 function Admin(){
+  
+
   return (
     <Root>
       <NavBar/>
       <ContainerAdmin>
         <Switch>
           <Route path="/admin/courses" render={() => <h1>course</h1>} />
-          <Route path="/admin/users" render={() => <h1>users</h1>} />
+          <Route path="/admin/users" component={ Users } />
           <Route path="/admin/teachers"  render={() => <h1>teachers</h1>} />
           <Route path="/admin/reviews"  component={Reviews} />
         </Switch>
-        <div style={{padding: '5px'}} >
-          <DataTablet 
-            setting={[{ key:"id", text:"ID", setting:{ width:5 }}, { key:"name", text:"Имя"}]} 
-            content={[{id:1,name:'Нуждин А. И.'},{id:2,name:'Гаас А. А.'},{id:3,name:'Сергеев А. А.'}]}
-          />
-        </div>
       </ContainerAdmin>
     </Root>
   )

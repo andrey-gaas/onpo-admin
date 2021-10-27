@@ -8,7 +8,6 @@ import Review from './review';
 
 function Reviews({ reviewsFetch, reviews }) {
   const { list, error } = reviews;
-
   console.log(list);
 
   useEffect(() => {
