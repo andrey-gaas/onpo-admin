@@ -13,12 +13,46 @@ import {
   Image,
   Title,
   SubTitle,
+  Input,
+  TextArea,
+  EditingButtons,
 } from './styles';
 import editSrc from '../../../images/edit.svg';
 import removeSrc from '../../../images/remove.svg';
 
 function Review({ id, user, course, text }) {
   const [ isOpen, setOpen ] = useState(false);
+  const [ isEditing, setEditing ] = useState(false);
+  const [ changes, setChanges ] = useState({
+    name: `${user.surname} ${user.name} ${user.middlename}`,
+    place: user.place,
+    position: user.position,
+    title: course.title,
+    text: text,
+  });
+
+  const editing = () => {
+    setEditing(!isEditing);
+
+    if (!isOpen) {
+      setOpen(true);
+    }
+  }
+
+  const handleChange = ({ target }) => {
+    setChanges({ ...changes, [target.name]: target.value });
+  };
+
+  const cancel = () => {
+    setChanges({
+      name: `${user.surname} ${user.name} ${user.middlename}`,
+      place: user.place,
+      position: user.position,
+      title: course.title,
+      text: text,
+    });
+    setEditing(false);
+  };
 
   return (
     <Root open={isOpen}>
@@ -27,17 +61,68 @@ function Review({ id, user, course, text }) {
           <OpenedContent>
             <Title>Пользователь:</Title>
             <SubTitle>Имя</SubTitle>
-            <OpenedBlock>{user.surname} {user.name}. {user.middlename}.</OpenedBlock>
-            <SubTitle>Город</SubTitle>
-            <OpenedBlock>{user.place}</OpenedBlock>
-            <SubTitle>Должность</SubTitle>
-            <OpenedBlock>{user.position}</OpenedBlock>
+            {
+              isEditing ?
+                <Input
+                  name="name"
+                  value={changes.name}
+                  onChange={handleChange}
+                />
+                : <OpenedBlock>{user.surname} {user.name}. {user.middlename}.</OpenedBlock>
+            }
 
+            <SubTitle>Город</SubTitle>
+            {
+              isEditing ?
+                <Input
+                  name="place"
+                  value={changes.place}
+                  onChange={handleChange}
+                />
+                : <OpenedBlock>{user.place}</OpenedBlock>
+            }
+
+            <SubTitle>Должность</SubTitle>
+            {
+              isEditing ?
+                <Input
+                  name="position"
+                  value={changes.position}
+                  onChange={handleChange}
+                />
+                : <OpenedBlock>{user.position}</OpenedBlock>
+            }
+            
             <Title>Курс:</Title>
-            <OpenedBlock>{course.title}</OpenedBlock>
+            {
+              isEditing ?
+                <Input
+                  name="title"
+                  value={changes.title}
+                  onChange={handleChange}
+                />
+                : <OpenedBlock>{course.title}</OpenedBlock>
+            }
 
             <Title>Текст:</Title>
-            <OpenedBlock>{text}</OpenedBlock>
+            {
+              isEditing ?
+                <TextArea
+                  rows={5}
+                  name="text"
+                  value={changes.text}
+                  onChange={handleChange}
+                />
+                : <OpenedBlock>{text}</OpenedBlock>
+            }
+
+            {
+              isEditing &&
+                <EditingButtons>
+                  <Button>Сохранить</Button>
+                  <Button white onClick={cancel}>Отмена</Button>
+                </EditingButtons>
+            }
           </OpenedContent>
       }
 
@@ -53,7 +138,7 @@ function Review({ id, user, course, text }) {
         <Button white onClick={() => setOpen(!isOpen)}>
           {isOpen ? 'Свернуть' : 'Подробнее'}
         </Button>
-        <Button>
+        <Button onClick={editing}>
           <Image src={editSrc} alt="" />
         </Button>
         <Button>

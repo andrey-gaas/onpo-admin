@@ -15,12 +15,12 @@ function Admin(){
           <Route path="/admin/teachers"  render={() => <h1>teachers</h1>} />
           <Route path="/admin/reviews"  component={Reviews} />
         </Switch>
-        <div style={{padding: '5px'}} >
+        {/* <div style={{padding: '5px'}} >
           <DataTablet 
             setting={[{ key:"id", text:"ID", setting:{ width:5 }}, { key:"name", text:"Имя"}]} 
             content={[{id:1,name:'Нуждин А. И.'},{id:2,name:'Гаас А. А.'},{id:3,name:'Сергеев А. А.'}]}
           />
-        </div>
+        </div> */}
       </ContainerAdmin>
     </Root>
   )
