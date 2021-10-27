@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { GRAY_COLOR, WHITE_COLOR, FS_MD, FS_LGS, PRIMARY_COLOR } from '../../../constants/styles';
+import { GRAY_COLOR, WHITE_COLOR, FS_MD, FS_LGS, PRIMARY_COLOR, BLACK_COLOR } from '../../../constants/styles';
 
 export const Root = styled.div`
   display: flex;
@@ -28,6 +28,7 @@ export const OpenedContent = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 900px;
+  min-width: 600px;
 `;
 
 export const OpenedBlock = styled(Block)`
@@ -75,8 +76,9 @@ export const Button = styled.button`
   align-items: center;
   margin: 0 5px;
   padding: 10px;
+  color: ${props => props.white ? BLACK_COLOR : WHITE_COLOR};
   background-color: ${props => props.white ? WHITE_COLOR : PRIMARY_COLOR};
-  border: ${props => props.white ? '1px solid #ddd' : 'none'};;
+  border: ${props => props.white ? '1px solid #ddd' : 'none'};
   border-radius: 6px;
   cursor: pointer;
   transition: 0.3s;
@@ -85,4 +87,44 @@ export const Button = styled.button`
 export const Image = styled.img`
   fill: ${WHITE_COLOR};
   height: 20px;
+`;
+
+export const Input = styled.input`
+  margin-top: 10px;
+  padding: 5px 10px;
+  width: 100%;
+  font-size: ${FS_MD};
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  outline: none;
+
+  :focus {
+    border-color: ${PRIMARY_COLOR};
+  }
+`;
+
+export const TextArea = styled.textarea`
+  margin-top: 10px;
+  padding: 5px 10px;
+  width: 100%;
+  font-size: ${FS_MD};
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  outline: none;
+  resize: vertical;
+
+  :focus {
+    border-color: ${PRIMARY_COLOR};
+  }
+`;
+
+export const EditingButtons = styled.div`
+  display: flex;
+  margin-top: 20px;
+`;
+
+export const Error = styled.h6`
+  margin: 10px 0;
+  font-size: ${FS_MD};
+  color: ${PRIMARY_COLOR};
 `;

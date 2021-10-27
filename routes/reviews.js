@@ -47,12 +47,12 @@ router.put('/:id', async (req, res) => {
 	const changes = req.body;
 
 	try {
-		await ReviewsApi.update(id, changes);
+		const result = await ReviewsApi.update(id, changes);
 
-		res.send('OK');
+		res.send(result.value);
 	} catch(error) {
 		console.log('Ошибка в PUT /api/reviews/:id');
-		res.status(500).send('Ошибка при редактировании комментария.');
+		res.status(500).send('Ошибка при редактировании комментария. Обновите страницу и попробуйте еще раз.');
 	}
 });
 
