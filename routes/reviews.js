@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const ReviewsApi = require('../services/Reviews');
+const CoursesApi = require('../services/Courses');
 
 const router = Router();
 
@@ -32,9 +33,14 @@ router.post('/', async (req, res) => {
 	const review = req.body;
 
 	try {
-		await ReviewsApi.add(review);
+		const reviewId = await ReviewsApi.add(review);
+		const newReview = await ReviewsApi.getOne(reviewId);
+		res.send(newReview);
 
-		res.send('OK');
+		// Добавляем отзыв в курс
+		const course = await CoursesApi.getOne(review.course.id);
+		await CoursesApi.update(review.course.id, { reviews: [...course.reviews, newReview.id] })
+
 	} catch(error) {
 		console.log(error.message);
 		console.log('Ошибка в POST /api/reviews');

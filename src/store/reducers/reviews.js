@@ -3,6 +3,7 @@ import * as actions from '../actions/reviews';
 const initialState = {
   list: null,
   error: {},
+  status: null,
 };
 
 function reviewsReducer(state = initialState, action) {
@@ -14,7 +15,13 @@ function reviewsReducer(state = initialState, action) {
       return { ...state, error: { ...state.error, list: action.error } };
 
     case actions.REVIEW_ADD_SUCCESS:
-      return { ...state, list: [...state.list, action.data] };
+      return { ...state, list: [...state.list, action.data], status: 'success' };
+
+    case actions.REVIEW_ADD_FAIL:
+      return { ...state, status: 'fail' };
+
+    case actions.REVIEW_ADD_STATUS:
+      return { ...state, status: action.status };
 
     case actions.REVIEW_EDIT_SUCCESS:
       return { ...state, list: state.list.map(item => item.id !== action.data.id ? item : action.data) };

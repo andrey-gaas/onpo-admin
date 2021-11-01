@@ -45,8 +45,8 @@ class ReviewsApi {
           review.id = id;
   
           try {
-            const newReview = await ONPO.reviews.insertOne(review);
-            return resolve(newReview);
+            await ONPO.reviews.insertOne(review);
+            return resolve(id);
           } catch (error) {
             return reject(error.message);
           }

@@ -11,9 +11,10 @@ export const reviewFetchSuccess = data => ({ type: actions.REVIEW_FETCH_SUCCESS,
 export const reviewFetchFail = error => ({ type: actions.REVIEW_FETCH_FAIL, error });
 
 // CREATE REVIEW
-export const reviewsAddFetch = () => ({ type: actions.REVIEW_ADD });
+export const reviewsAddFetch = data => ({ type: actions.REVIEW_ADD, data });
 export const reviewsAddSuccess = data => ({ type: actions.REVIEW_ADD_SUCCESS, data });
 export const reviewsAddFail = error => ({ type: actions.REVIEW_ADD_FAIL, error });
+export const reviewsAddStatus = status => ({ type: actions.REVIEW_ADD_STATUS, status });
 
 // EDIT REVIEW
 export const reviewsEdit = data => ({ type: actions.REVIEW_EDIT, data });
