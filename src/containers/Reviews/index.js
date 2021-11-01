@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Modal, Button } from '../../components';
 import { reviewsFetch } from '../../store/AC/reviews';
+import { coursesFetch } from '../../store/AC/courses';
 import {
   Root, Text, Error, Container, List,
   TopContainer, Grow,
@@ -11,14 +12,15 @@ import {
 import Review from './review';
 import Form from './Form';
 
-function Reviews({ reviewsFetch, reviews }) {
+function Reviews({ reviewsFetch, coursesFetch, reviews }) {
   const { list, error } = reviews;
   
   const [isOpen, setOpen] = useState(false);
 
   useEffect(() => {
     reviewsFetch();
-  }, [reviewsFetch]);
+    coursesFetch();
+  }, [reviewsFetch, coursesFetch]);
 
   return (
     <Root>
@@ -67,14 +69,17 @@ function Reviews({ reviewsFetch, reviews }) {
 Reviews.propTypes = {
   reviewsFetch: PropTypes.func.isRequired,
   reviews:      PropTypes.object.isRequired,
+  coursesFetch: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({ reviews }) => ({
+const mapStateToProps = ({ reviews, courses }) => ({
   reviews,
+  courses,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   reviewsFetch,
+  coursesFetch,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Reviews);
