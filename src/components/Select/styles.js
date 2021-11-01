@@ -28,7 +28,7 @@ export const Placeholder = styled.div`
 `;
 
 export const Selected = styled(Placeholder)`
-  color ${BLACK_COLOR};
+  color: ${BLACK_COLOR};
 `;
 
 export const List = styled.div`
@@ -36,6 +36,8 @@ export const List = styled.div`
   top: 39px;
   left: 0;
   right: 0;
+  max-height: 300px;
+  overflow-y: scroll;
   background-color: ${WHITE_COLOR};
   border: 1px solid #ddd;
   border-top: none;
