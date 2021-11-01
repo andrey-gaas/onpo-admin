@@ -17,7 +17,6 @@ function Review({ id, user, course, text, reviewsEdit, error }) {
   const [ isEditing, setEditing ] = useState(false);
   const [ changes, setChanges ] = useState({
     name: `${user.surname} ${user.name} ${user.middlename}`,
-    place: user.place,
     position: user.position,
     title: course.title,
     text: text,
@@ -38,7 +37,6 @@ function Review({ id, user, course, text, reviewsEdit, error }) {
   const cancel = () => {
     setChanges({
       name: `${user.surname} ${user.name} ${user.middlename}`,
-      place: user.place,
       position: user.position,
       title: course.title,
       text: text,
@@ -56,7 +54,6 @@ function Review({ id, user, course, text, reviewsEdit, error }) {
         surname: userName[0],
         name: userName[1],
         middlename: userName[2],
-        place: changes.place,
         position: changes.position,
       },
       course: {
@@ -87,18 +84,7 @@ function Review({ id, user, course, text, reviewsEdit, error }) {
                 : <OpenedBlock>{user.surname} {user.name}. {user.middlename}.</OpenedBlock>
             }
 
-            <SubTitle>Город</SubTitle>
-            {
-              isEditing ?
-                <Input
-                  name="place"
-                  value={changes.place}
-                  onChange={handleChange}
-                />
-                : <OpenedBlock>{user.place}</OpenedBlock>
-            }
-
-            <SubTitle>Должность</SubTitle>
+            <SubTitle>Место работы</SubTitle>
             {
               isEditing ?
                 <Input
