@@ -2,16 +2,18 @@ import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Modal } from '../../components';
+import { Modal, Button } from '../../components';
 import { reviewsFetch } from '../../store/AC/reviews';
-import { Root, Text, Error, List } from './styles';
+import {
+  Root, Text, Error, Container, List,
+  TopContainer, Grow,
+} from './styles';
 import Review from './review';
 
 function Reviews({ reviewsFetch, reviews }) {
   const { list, error } = reviews;
   
-  const [isOpen, setOpen] = useState(true);
-
+  const [isOpen, setOpen] = useState(false);
 
   useEffect(() => {
     reviewsFetch();
@@ -36,11 +38,17 @@ function Reviews({ reviewsFetch, reviews }) {
 
       {
         list && list.length &&
-        <Fragment>
+        <Container>
+          <TopContainer>
+            <Grow />
+            <Button onClick={() => setOpen(true)}>
+              Создать комментарий
+            </Button>
+          </TopContainer>
           {
             isOpen &&
             <Modal
-              title="Заголовок"
+              title="Создание отзыва"
               close={() => setOpen(false)}
             >
               <p>HELLO WORLD</p>
@@ -49,7 +57,7 @@ function Reviews({ reviewsFetch, reviews }) {
           <List>
             {list.map(item => <Review key={item.id} {...item} error={error[item.id]} />)}
           </List>
-        </Fragment>
+        </Container>
       }
     </Root>
   );
