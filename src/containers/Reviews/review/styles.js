@@ -1,5 +1,8 @@
 import styled from 'styled-components';
-import { Input as InputPrototype } from '../../../components';
+import {
+  Input as InputPrototype,
+  TextArea as TextAreaPrototype,
+} from '../../../components';
 import { GRAY_COLOR, WHITE_COLOR, FS_MD, FS_LGS, PRIMARY_COLOR, BLACK_COLOR } from '../../../constants/styles';
 
 export const Root = styled.div`
@@ -94,19 +97,8 @@ export const Input = styled(InputPrototype)`
   margin-top: 10px;
 `;
 
-export const TextArea = styled.textarea`
+export const TextArea = styled(TextAreaPrototype)`
   margin-top: 10px;
-  padding: 5px 10px;
-  width: 100%;
-  font-size: ${FS_MD};
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  outline: none;
-  resize: vertical;
-
-  :focus {
-    border-color: ${PRIMARY_COLOR};
-  }
 `;
 
 export const EditingButtons = styled.div`
