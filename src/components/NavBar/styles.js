@@ -2,24 +2,16 @@ import styled from 'styled-components';
 
 import {
   // TABLET,
-  DESCTOP,
+  // DESCTOP,
   PRIMARY_COLOR,
-  TABLET,
+  // TABLET,
   WHITE_COLOR,
 } from '../../constants/styles';
 
 export const Root = styled.nav`
-  height: calc(100vh - 90px);
   width: 250px;
   background-color: ${WHITE_COLOR};
   border-right: 2px solid ${PRIMARY_COLOR};
-
-  @media ${TABLET}{
-    height: calc(100vh - 103px);
-  }
-  @media ${DESCTOP}{
-    height: calc(100vh - 118px);
-  }
 `
 export const List = styled.ul`
   display: flex;
@@ -43,6 +35,7 @@ export const HeadItem = styled.li`
   background-color: ${PRIMARY_COLOR};
   color: ${WHITE_COLOR};
   margin-bottom: 10px;
+  height: 43px;
 `
 
 export const Button = styled.button`

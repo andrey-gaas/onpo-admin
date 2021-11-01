@@ -1,25 +1,32 @@
 import React from "react";
-import { Root, TRow, TCol} from './styles';
+import { Root, TColHead, Row} from './styles';
+
+import TRow from './TRow'
 
 function DataTablet( { setting, content } ){
-  const THead =  Object.keys(setting)
-  const TContent = content.map( el => ({...el, button:el.id}) )
-  const width = 95/THead.length
+  const THead =  setting.map( el => ({...el, setting: el.setting ? el.setting : {} }))
+  const TContent = content
+  const bthWidth = 7
+  const width = ( ( 95- 2*bthWidth ) - (THead.reduce( (acc, el)=> acc+= el.setting.width?el.setting.width:0 , 0 ))) / 
+                (THead.length - THead.reduce( (acc, el)=> acc+= el.setting.width?1:0 , 0 ) )
   return (
     <Root>
-      <TRow>
-        <TCol>№</TCol>
+      <Row>
+        <TColHead>№</TColHead>
         {THead.map( el => {
-          return (<TCol key={setting[el]} width={width} >{setting[el]}</TCol>)
+          return (<TColHead key={"key_" + el.key} width={el.setting.width ? el.setting.width : width} >{el.text}</TColHead>)
         })}
-      </TRow> 
-      {TContent.map( (content, index)=> { return (<TRow key={'row'+index}>
-        <TCol>{index}</TCol>
-        {THead.map( key => { return (
-          <TCol key={'id'+content.id} width={width} >{content[key]}</TCol>
-        )})}
-      </TRow>)} )
-      }     
+        <TColHead width={bthWidth} >Ред.</TColHead>
+        <TColHead width={bthWidth} >Удал.</TColHead>
+      </Row>
+      {TContent.map( (content, index) => (
+        <TRow key={'row_'+index} 
+              width={width} 
+              content={content} 
+              index={index} 
+              THead={THead} 
+              bthWidth={bthWidth} />
+      ))}     
     </Root>
   )
 }
