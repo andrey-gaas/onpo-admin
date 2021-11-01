@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Modal } from '../../components';
 import { reviewsFetch } from '../../store/AC/reviews';
 import { Root, Text, Error, List } from './styles';
 import Review from './review';
 
 function Reviews({ reviewsFetch, reviews }) {
   const { list, error } = reviews;
-  console.log(list);
+  
+  const [isOpen, setOpen] = useState(true);
 
 
   useEffect(() => {
@@ -34,9 +36,20 @@ function Reviews({ reviewsFetch, reviews }) {
 
       {
         list && list.length &&
-        <List>
-          {list.map(item => <Review key={item.id} {...item} error={error[item.id]} />)}
-        </List>
+        <Fragment>
+          {
+            isOpen &&
+            <Modal
+              title="Заголовок"
+              close={() => setOpen(false)}
+            >
+              <p>HELLO WORLD</p>
+            </Modal>
+          }
+          <List>
+            {list.map(item => <Review key={item.id} {...item} error={error[item.id]} />)}
+          </List>
+        </Fragment>
       }
     </Root>
   );
