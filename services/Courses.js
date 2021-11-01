@@ -45,8 +45,8 @@ class CoursesApi {
           course.id = id;
   
           try {
-            const newCourse = await ONPO.courses.insertOne(course);
-            return resolve(newCourse);
+            await ONPO.courses.insertOne(course);
+            return resolve(course.id);
           } catch (error) {
             console.log('Error adding course');
             return reject(error.message);
