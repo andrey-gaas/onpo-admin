@@ -13,11 +13,13 @@ function Button({ children, ...props }) {
 Button.propTypes = {
   type: PropTypes.string,
   fullWidth: PropTypes.bool,
+  size: PropTypes.string,
 };
 
 Button.defaultProps = {
   type: 'normal',
   fullWidth: false,
+  size: 'small',
 };
 
 export default Button;

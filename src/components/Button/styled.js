@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import {
   TABLET,
+  FS_XSM,
   FS_SM,
   FS_MD,
   BLACK_COLOR,
@@ -9,10 +10,10 @@ import {
 } from '../../constants/styles';
 
 export const Root = styled.button`
-  padding: 16px 32px;
+  padding: ${props => props.size === 'small' ? '12px 15px' : '16px 32px'};
   width: ${props => props.fullWidth && '100%'};
   font-family: 'Gotham';
-  font-size: ${FS_SM};
+  font-size: ${props => props.size === 'small' ? FS_XSM : FS_SM};
   font-weight: bold;
   text-decoration: none !important;
   color: ${props => props.type === 'primary' ? '#fff' : BLACK_COLOR};
@@ -28,6 +29,6 @@ export const Root = styled.button`
   }
 
   @media ${TABLET} {
-    font-size: ${FS_MD};
+    font-size: ${props => props.size === 'small' ? FS_SM : FS_MD};
   }
 `;

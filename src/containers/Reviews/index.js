@@ -9,11 +9,12 @@ import {
   TopContainer, Grow,
 } from './styles';
 import Review from './review';
+import Form from './Form';
 
 function Reviews({ reviewsFetch, reviews }) {
   const { list, error } = reviews;
   
-  const [isOpen, setOpen] = useState(true);
+  const [isOpen, setOpen] = useState(false);
 
   useEffect(() => {
     reviewsFetch();
@@ -51,6 +52,7 @@ function Reviews({ reviewsFetch, reviews }) {
               title="Создание отзыва"
               close={() => setOpen(false)}
             >
+              <Form close={() => setOpen(false)} />
             </Modal>
           }
           <List>

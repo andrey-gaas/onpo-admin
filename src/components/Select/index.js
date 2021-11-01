@@ -35,7 +35,7 @@ function Select({ placeholder, data, onChange }) {
         <List>
           {
             data.map((item, i) => (
-              <Item key={item.id} onClick={() => handleSelect(i)}>
+              <Item key={i} onClick={() => handleSelect(i)}>
                 {item.title}
               </Item>
             ))
