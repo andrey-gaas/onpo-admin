@@ -12,7 +12,7 @@ import {
 import Review from './review';
 import Form from './Form';
 
-function Reviews({ reviewsFetch, coursesFetch, reviews }) {
+function Reviews({ reviewsFetch, coursesFetch, reviews, courses }) {
   const { list, error } = reviews;
   
   const [isOpen, setOpen] = useState(false);
@@ -54,7 +54,7 @@ function Reviews({ reviewsFetch, coursesFetch, reviews }) {
               title="Создание отзыва"
               close={() => setOpen(false)}
             >
-              <Form close={() => setOpen(false)} />
+              <Form close={() => setOpen(false)} courses={courses.list} />
             </Modal>
           }
           <List>
@@ -70,6 +70,7 @@ Reviews.propTypes = {
   reviewsFetch: PropTypes.func.isRequired,
   reviews:      PropTypes.object.isRequired,
   coursesFetch: PropTypes.func.isRequired,
+  courses:      PropTypes.object.isRequired,
 };
 
 const mapStateToProps = ({ reviews, courses }) => ({

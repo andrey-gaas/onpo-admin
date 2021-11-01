@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Select, Input, TextArea, Button } from '../../../components';
 import { Root, Title, Container } from './styles';
 
-function Form({ close }) {
+function Form({ close, courses }) {
   return (
     <Root>
       <Title>Курс:</Title>
@@ -11,11 +11,7 @@ function Form({ close }) {
         <Select
           placeholder="Выберите курс"
           onChange={data => console.log(data)}
-          data={[
-            { title: 'Вариан 1' },
-            { title: 'Вариан 2' },
-            { title: 'Вариан 3' },
-          ]}
+          data={courses}
         />
       </Container>
 
@@ -40,7 +36,8 @@ function Form({ close }) {
 }
 
 Form.propTypes = {
-  close: PropTypes.func.isRequired,
+  close:   PropTypes.func.isRequired,
+  courses: PropTypes.array.isRequired,
 };
 
 export default Form;
