@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -13,7 +13,7 @@ import Review from './review';
 function Reviews({ reviewsFetch, reviews }) {
   const { list, error } = reviews;
   
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(true);
 
   useEffect(() => {
     reviewsFetch();
@@ -51,7 +51,6 @@ function Reviews({ reviewsFetch, reviews }) {
               title="Создание отзыва"
               close={() => setOpen(false)}
             >
-              <p>HELLO WORLD</p>
             </Modal>
           }
           <List>
