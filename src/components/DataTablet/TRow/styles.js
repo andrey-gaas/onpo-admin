@@ -3,58 +3,32 @@ import styled from 'styled-components';
 import {
   // TABLET,
   // DESCTOP,
-  PRIMARY_COLOR,
+  // PRIMARY_COLOR,
   GRAY_COLOR,
   // TABLET,
   WHITE_COLOR,
-  BLACK_COLOR
-} from '../../constants/styles';
+  //BLACK_COLOR
+} from '../../../constants/styles';
 
 export const Root = styled.div`
-  flex-shrink: 1;
-  background-color: #eeeeee;
-  flex-grow: 0;
-  width: calc(100% - 10px);
-  display: flex;
-  flex-wrap:wrap;
-  border: 1px solid ${BLACK_COLOR};
-  margin: 5px;
-  font-size: 16px;
-  line-height: 2;
-`
-export const TColHead = styled.div`
-  //border-right: 1px solid ${BLACK_COLOR};
-  padding: 5px;
-  display: flex;
-  align-items:center;
-  justify-content:center;
-  background-color: ${PRIMARY_COLOR};
-  color: ${WHITE_COLOR};
-  width: ${props => props.width ? props.width : 5 }%;
-  font-weight:bold;
-  &:last-child{
-    border-right: none;
-  }
-`
-export const Row = styled.div`
   width: 100%;
   border-bottom: 1px solid ${GRAY_COLOR};
   display: flex;
-  
+  flex-wrap:wrap;
   &:last-child{
     border-bottom: none;
   }
 `
-
 export const TCol = styled.div`
   border-right: 1px solid ${GRAY_COLOR};
   padding: 5px;
   display: flex;
   align-items:center;
-  justify-content:center;
   background-color: ${WHITE_COLOR};
   width: ${props => props.width ? props.width : 5 }%;
-  
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   &:last-child{
     border-right: none;
   }
@@ -77,8 +51,22 @@ export const Btn = styled.button`
   &.yellow{
     background-color:#fbee2e;
   }
+
+  &.width_norm{
+    width: 130px;
+    flex-grow: unset;
+    margin: 5px;
+    margin-left: 10px;
+  }
 `
 
 export const Image = styled.img`
 
+`
+
+export const BtnContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content:flex-end;
+  background-color: ${WHITE_COLOR};
 `

@@ -1,5 +1,5 @@
-import { call, put } from 'redux-saga/effects';
-import { authSuccess, authFail } from '../../AC/auth';
+import { call } from 'redux-saga/effects';
+// import { authSuccess, authFail } from '../../AC/auth';
 import AuthApi from '../../../api/Auth';
 
 function* fetchLots() {
