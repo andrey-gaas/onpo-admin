@@ -4,22 +4,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { reviewsEdit } from '../../../store/AC/reviews';
 import {
-  Root,
-  Number,
-  User,
-  Course,
-  ClosedContent,
-  OpenedContent,
-  OpenedBlock,
-  ButtonsContainer,
-  Button,
-  Image,
-  Title,
-  SubTitle,
-  Input,
-  TextArea,
-  EditingButtons,
-  Error,
+  Root, Number, User, Course, ClosedContent,
+  OpenedContent, OpenedBlock, ButtonsContainer, Button,
+  Image, Title, SubTitle, TextArea, EditingButtons,
+  Error, Input,
 } from './styles';
 import editSrc from '../../../images/edit.svg';
 import removeSrc from '../../../images/remove.svg';

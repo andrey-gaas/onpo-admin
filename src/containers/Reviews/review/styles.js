@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Input as InputPrototype } from '../../../components';
 import { GRAY_COLOR, WHITE_COLOR, FS_MD, FS_LGS, PRIMARY_COLOR, BLACK_COLOR } from '../../../constants/styles';
 
 export const Root = styled.div`
@@ -89,18 +90,8 @@ export const Image = styled.img`
   height: 20px;
 `;
 
-export const Input = styled.input`
+export const Input = styled(InputPrototype)`
   margin-top: 10px;
-  padding: 5px 10px;
-  width: 100%;
-  font-size: ${FS_MD};
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  outline: none;
-
-  :focus {
-    border-color: ${PRIMARY_COLOR};
-  }
 `;
 
 export const TextArea = styled.textarea`
