@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Modal, Button } from '../../components';
-import { reviewsFetch } from '../../store/AC/reviews';
+import { reviewsFetch, reviewsRemove } from '../../store/AC/reviews';
 import { coursesFetch } from '../../store/AC/courses';
 import {
   Root, Text, Error, Container, List,
@@ -12,7 +12,7 @@ import {
 import Review from './review';
 import Form from './Form';
 
-function Reviews({ reviewsFetch, coursesFetch, reviews, courses }) {
+function Reviews({ reviewsFetch, coursesFetch, reviews, courses, reviewsRemove }) {
   const { list, error } = reviews;
   
   const [isOpen, setOpen] = useState(false);
@@ -58,7 +58,7 @@ function Reviews({ reviewsFetch, coursesFetch, reviews, courses }) {
             </Modal>
           }
           <List>
-            {list.map(item => <Review key={item.id} {...item} error={error[item.id]} />)}
+            {list.map(item => <Review key={item.id} {...item} error={error[item.id]} remove={() => reviewsRemove(item.id)} />)}
           </List>
         </Container>
       }
@@ -67,10 +67,11 @@ function Reviews({ reviewsFetch, coursesFetch, reviews, courses }) {
 }
 
 Reviews.propTypes = {
-  reviewsFetch: PropTypes.func.isRequired,
-  reviews:      PropTypes.object.isRequired,
-  coursesFetch: PropTypes.func.isRequired,
-  courses:      PropTypes.object.isRequired,
+  reviewsFetch:  PropTypes.func.isRequired,
+  reviews:       PropTypes.object.isRequired,
+  coursesFetch:  PropTypes.func.isRequired,
+  courses:       PropTypes.object.isRequired,
+  reviewsRemove: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({ reviews, courses }) => ({
@@ -81,6 +82,7 @@ const mapStateToProps = ({ reviews, courses }) => ({
 const mapDispatchToProps = dispatch => bindActionCreators({
   reviewsFetch,
   coursesFetch,
+  reviewsRemove,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Reviews);

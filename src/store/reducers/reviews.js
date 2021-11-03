@@ -29,6 +29,9 @@ function reviewsReducer(state = initialState, action) {
     case actions.REVIEW_EDIT_FAIL:
       return { ...state, error: { ...state.error, [action.id]: action.error } };
 
+    case actions.REVIEW_REMOVE_SUCCESS:
+      return { ...state, list: state.list.filter(item => item.id !== action.id) };
+
     default:
       return state;
   }

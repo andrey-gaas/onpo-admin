@@ -12,7 +12,7 @@ import {
 import editSrc from '../../../images/edit.svg';
 import removeSrc from '../../../images/remove.svg';
 
-function Review({ id, user, course, text, reviewsEdit, error }) {
+function Review({ id, user, course, text, reviewsEdit, error, remove }) {
   const [ isOpen, setOpen ] = useState(false);
   const [ isEditing, setEditing ] = useState(false);
   const [ changes, setChanges ] = useState({
@@ -143,7 +143,7 @@ function Review({ id, user, course, text, reviewsEdit, error }) {
         <Button onClick={editing}>
           <Image src={editSrc} alt="" />
         </Button>
-        <Button>
+        <Button onClick={remove}>
           <Image src={removeSrc} alt="" />
         </Button>
       </ButtonsContainer>
@@ -152,12 +152,13 @@ function Review({ id, user, course, text, reviewsEdit, error }) {
 }
 
 Review.propTypes = {
-  id: PropTypes.number.isRequired,
-  user: PropTypes.object.isRequired,
-  course: PropTypes.object.isRequired,
-  text: PropTypes.string.isRequired,
+  id:          PropTypes.number.isRequired,
+  user:        PropTypes.object.isRequired,
+  course:      PropTypes.object.isRequired,
+  text:        PropTypes.string.isRequired,
   reviewsEdit: PropTypes.func.isRequired,
-  error: PropTypes.string,
+  error:       PropTypes.string,
+  remove:      PropTypes.func.isRequired,
 };
 
 Review.defaultProps = {

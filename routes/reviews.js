@@ -66,9 +66,14 @@ router.delete('/:id', async (req, res) => {
 	const id = +req.params.id;
 
 	try {
-		await ReviewsApi.remove(id);
-
+		const removedReview = await ReviewsApi.remove(id);
 		res.send('OK');
+
+		// Удаляем отзыв из курса
+		const course = await CoursesApi.getOne(removedReview.course.id);
+		await CoursesApi.update(course.id, {
+			reviews: course.reviews.filter(item => item !== removedReview.id),
+		});
 	} catch(error) {
 		console.log('Ошибка в DELETE /api/reviews/:id');
 		res.status(500).send('Ошибка при удалении комментария.');

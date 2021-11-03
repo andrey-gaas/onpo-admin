@@ -31,7 +31,7 @@ class ReviewsApi {
 
   static remove(id) {
     return axios
-      .remove(`/api/reviews/${id}`)
+      .delete(`/api/reviews/${id}`)
       .then(response => response)
       .catch(({ response }) => ({ ...response }));
   }

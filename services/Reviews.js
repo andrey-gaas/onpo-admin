@@ -68,7 +68,7 @@ class ReviewsApi {
   static async remove(id) {
     try {
       const removedReview = await ONPO.reviews.findOneAndDelete({ id });
-      return removedReview;
+      return removedReview.value;
     } catch(error) {
       console.log('Error deleting comment');
       console.log(error.message);
