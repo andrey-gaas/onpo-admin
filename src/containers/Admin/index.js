@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route } from 'react-router-dom';
 import Reviews from '../Reviews';
-import Users from "../Users"
+// import Users from "../Users"
 import Teachers from "../Teachers"
 import { NavBar } from '../../components';
 import { Root, ContainerAdmin } from './styles';
