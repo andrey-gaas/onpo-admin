@@ -111,3 +111,14 @@ export const Error = styled.h6`
   font-size: ${FS_MD};
   color: ${PRIMARY_COLOR};
 `;
+
+export const ModalText = styled.p`
+  margin: 0;
+  font-size: ${FS_MD};
+`;
+
+export const ModalButtonsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+`;

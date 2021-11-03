@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { reviewsEdit } from '../../../store/AC/reviews';
+import { Modal } from '../../../components';
 import {
   Root, Number, User, Course, ClosedContent,
   OpenedContent, OpenedBlock, ButtonsContainer, Button,
   Image, Title, SubTitle, TextArea, EditingButtons,
-  Error, Input,
+  Error, Input, ModalButtonsContainer,
 } from './styles';
 import editSrc from '../../../images/edit.svg';
 import removeSrc from '../../../images/remove.svg';
@@ -15,6 +16,7 @@ import removeSrc from '../../../images/remove.svg';
 function Review({ id, user, course, text, reviewsEdit, error, remove }) {
   const [ isOpen, setOpen ] = useState(false);
   const [ isEditing, setEditing ] = useState(false);
+  const [ isOpenRemove, setOpenRemove ] = useState(false);
   const [ changes, setChanges ] = useState({
     name: `${user.surname} ${user.name} ${user.middlename}`,
     position: user.position,
@@ -143,10 +145,25 @@ function Review({ id, user, course, text, reviewsEdit, error, remove }) {
         <Button onClick={editing}>
           <Image src={editSrc} alt="" />
         </Button>
-        <Button onClick={remove}>
+        <Button onClick={() => setOpenRemove(true)}>
           <Image src={removeSrc} alt="" />
         </Button>
       </ButtonsContainer>
+
+      {
+        // REMOVE MADAL
+        isOpenRemove &&
+        <Modal
+          title="Удаление отзыва"
+          close={() => setOpenRemove(false)}
+        >
+          <p>Вы действительно хотите удалить этот отзыв?</p>
+          <ModalButtonsContainer>
+            <Button onClick={remove}>Удалить</Button>
+            <Button white onClick={() => setOpenRemove(false)}>Отмена</Button>
+          </ModalButtonsContainer>
+        </Modal>
+      }
     </Root>
   );
 }
