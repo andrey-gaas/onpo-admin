@@ -1,19 +1,24 @@
-import { call } from 'redux-saga/effects';
+import { call, put } from 'redux-saga/effects';
 import AuthApi from '../../../api/Auth';
+import { authSuccess, authFail, authSetLoading } from '../../AC/auth';
 
 function* fetchLots() {
   try {
+    yield put(authSetLoading(true));
+
     const response = yield call(AuthApi.check);
 
     if (response.status === 200) {
-      console.log(response.data.libraryCardNumber);
       localStorage.setItem('card', response.data.libraryCardNumber);
-      /* if (status === 'active') yield put(setActiveLots(response.data));
-      else if (status === 'completed') yield put(setCompletedLots(response.data));
-      else if (status === 'coming') yield put(setComingLots(response.data)); */
+      yield put(authSuccess());
+    }
+
+    else if (response.status === 401) {
+      localStorage.removeItem('card');
+      yield put(authFail());
     }
   } catch(e) {
-    console.error('ОШИБКАААААААААААА');
+    yield put(authFail());
     console.error(e);
   }
 }

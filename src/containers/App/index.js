@@ -9,8 +9,9 @@ import Admin from '../Admin';
 
 function App({ authFetch }) {
   const card = localStorage.getItem('card');
+
   useEffect(() => {
-    if (!card) {
+    if (card) {
       authFetch();
     }
   }, [authFetch, card]);
@@ -21,7 +22,7 @@ function App({ authFetch }) {
       <Switch>
         <Route exact path="/" render={() => <h1>MAIN PAGE</h1>} />
         <Route path="/page2" render={() => <h1>PAGE 2</h1>} />
-        <PrivateRoute path="/admin" component={Admin} auth={true} />
+        <PrivateRoute path="/admin" component={Admin} auth={!!card} />
       </Switch>
     </Fragment>
   );

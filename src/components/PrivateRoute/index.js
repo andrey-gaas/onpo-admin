@@ -4,7 +4,6 @@ import { Route } from 'react-router-dom';
 
 
 function PrivateRoute({ auth, path, component }) {
-  console.log(auth);
   return auth ?
     <Route path={path} component={component} />
     :
