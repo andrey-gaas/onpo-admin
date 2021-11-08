@@ -1,39 +1,47 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { authFetch } from '../../store/AC/auth';
 import { Header, PrivateRoute } from '../../components';
+import Loading from '../Loading';
 import Admin from '../Admin';
 
-function App({ authFetch }) {
-  const card = localStorage.getItem('card');
+function App({ authFetch, isAuth, loading }) {
 
   useEffect(() => {
-    if (card) {
-      authFetch();
-    }
-  }, [authFetch, card]);
+    authFetch();
+  }, [authFetch]);
 
   return (
     <Fragment>
       <Header />
-      <Switch>
-        <Route exact path="/" render={() => <h1>MAIN PAGE</h1>} />
-        <Route path="/page2" render={() => <h1>PAGE 2</h1>} />
-        <PrivateRoute path="/admin" component={Admin} auth={!!card} />
-      </Switch>
+      { loading && <Loading /> }
+      {
+        loading === false &&
+          <Switch>
+            <PrivateRoute exact path="/" component={() => <h1>MAIN PAGE</h1>} auth={isAuth} />
+            <PrivateRoute path="/admin" component={Admin} auth={isAuth} />
+          </Switch>
+      }
     </Fragment>
   );
 }
 
 App.propTypes = {
   authFetch: PropTypes.func.isRequired,
+  isAuth:    PropTypes.bool.isRequired,
+  loading:   PropTypes.bool,
 };
+
+const mapStateToProps = ({ auth }) => ({
+  isAuth: auth.isAuth,
+  loading: auth.loading,
+});
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   authFetch,
 }, dispatch);
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

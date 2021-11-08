@@ -1,7 +1,7 @@
 import { AUTH_FETCH_SUCCESS, AUTH_FETCH_FAIL } from '../actions/auth';
 
 const initialState = {
-  loading: null,
+  loading: true,
   isAuth: false,
 };
 
