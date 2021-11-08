@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { authFetch } from '../../store/AC/auth';
-import { Header } from '../../components';
+import { Header, PrivateRoute } from '../../components';
 import Admin from '../Admin';
 
 function App({ authFetch }) {
@@ -21,7 +21,7 @@ function App({ authFetch }) {
       <Switch>
         <Route exact path="/" render={() => <h1>MAIN PAGE</h1>} />
         <Route path="/page2" render={() => <h1>PAGE 2</h1>} />
-        <Route path="/admin" component={Admin} />
+        <PrivateRoute path="/admin" component={Admin} auth={true} />
       </Switch>
     </Fragment>
   );
