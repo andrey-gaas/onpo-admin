@@ -1,10 +1,9 @@
 import { call, put } from 'redux-saga/effects';
 import AuthApi from '../../../api/Auth';
-import { authSuccess, authFail, authSetLoading } from '../../AC/auth';
+import { authSuccess, authFail } from '../../AC/auth';
 
 function* fetchLots() {
   try {
-    yield put(authSetLoading(true));
 
     const response = yield call(AuthApi.check);
 
