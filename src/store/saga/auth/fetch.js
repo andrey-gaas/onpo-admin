@@ -1,5 +1,4 @@
 import { call } from 'redux-saga/effects';
-// import { authSuccess, authFail } from '../../AC/auth';
 import AuthApi from '../../../api/Auth';
 
 function* fetchLots() {
@@ -7,8 +6,8 @@ function* fetchLots() {
     const response = yield call(AuthApi.check);
 
     if (response.status === 200) {
-      console.log('ZAEBIS');
-      console.log(response);
+      console.log(response.data.libraryCardNumber);
+      localStorage.setItem('card', response.data.libraryCardNumber);
       /* if (status === 'active') yield put(setActiveLots(response.data));
       else if (status === 'completed') yield put(setCompletedLots(response.data));
       else if (status === 'coming') yield put(setComingLots(response.data)); */
