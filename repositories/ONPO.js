@@ -7,6 +7,9 @@ class Mongo {
   static teachers = null;
   static reviews = null;
   static pages = null;
+  static patrons = null;
+  static mainUsers = null;
+  static users = null;
 
   static connect() {
     const mongoClient = new MongoClient(
