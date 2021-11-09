@@ -27,6 +27,10 @@ class Mongo {
       Mongo.teachers = database.db('education').collection('teachers');
       Mongo.reviews = database.db('education').collection('reviews');
       Mongo.pages = database.db('education').collection('pages');
+
+      Mongo.patrons = database.db('patrons');
+      Mongo.mainUsers = database.db('patrons').collection('users');
+      Mongo.users = database.db('patrons').collection('users-onpo');
     });
 
   }
