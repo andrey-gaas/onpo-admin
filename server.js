@@ -16,6 +16,7 @@ ONPO_db.connect();
 // ROUTES
 app.use('/api/reviews', require('./routes/reviews'));
 app.use('/api/courses', require('./routes/courses'));
+app.use('/api/users', require('./routes/users'));
 
 if (process.env.NODE_ENV === 'production') {
   app.use('/', express.static(path.join(__dirname, 'build')));

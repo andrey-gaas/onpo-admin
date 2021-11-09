@@ -16,9 +16,9 @@ class PatronsApi {
     });
   }
 
-  static async getOne(id) {
+  static async getOne(filter = {}) {
     try {
-      const user = await ONPO.mainUsers.findOne({ id });
+      const user = await ONPO.mainUsers.findOne(filter);
       return user;
     } catch(error) {
       console.log('Error getting user');

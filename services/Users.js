@@ -16,9 +16,9 @@ class UsersApi {
     });
   }
 
-  static async getOne(id) {
+  static async getOne(filter) {
     try {
-      const user = await ONPO.users.findOne({ id });
+      const user = await ONPO.users.findOne(filter);
       return user;
     } catch(error) {
       console.log('Error getting user');
@@ -27,11 +27,12 @@ class UsersApi {
     }
   }
 
-  static add(_id) {
+  static add(_id, card) {
     return new Promise((resolve, reject) => {
       let id = 0;
       const user = {
         right: 'user',
+        libraryCardNumber: card,
       };
 
       ONPO
@@ -47,13 +48,11 @@ class UsersApi {
           if (lastUser && lastUser.length) id = lastUser[0].id + 1;
   
           user.id = id;
-          user.info = {
-            '$ref': 'users',
-            '$id': _id,
-          };
+          user.user = _id;
   
           try {
-            await ONPO.reviews.insertOne(user);
+            await ONPO.users.insertOne(user);
+
             return resolve(id);
           } catch (error) {
             return reject(error.message);
