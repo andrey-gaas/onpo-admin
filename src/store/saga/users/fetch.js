@@ -1,19 +1,18 @@
 import { call, put } from 'redux-saga/effects';
-// import { usersFetchSuccess, usersFetchFail } from '../../AC/users';
-// import ReviewsApi from '../../../api/Reviews';
+import { usersFetchSuccess, usersFetchFail } from '../../AC/users';
+import UsersApi from '../../../api/Users';
 
 function* fetch() {
-  console.log('FETCH');
-  /* try {
-    const response = yield call(ReviewsApi.fetchAll);
+  try {
+    const response = yield call(UsersApi.fetchAll);
 
     if (response.status === 200) {
-      yield put(reviewsFetchSuccess(response.data));
+      yield put(usersFetchSuccess(response.data));
     }
   } catch(e) {
     console.error(e);
-    yield put(reviewsFetchFail(e.message));
-  } */
+    yield put(usersFetchFail(e.message));
+  }
 }
 
 export default fetch;
