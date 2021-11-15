@@ -21,7 +21,11 @@ export const Error = styled.div`
   color: ${PRIMARY_COLOR};
 `;
 
-export const List = styled.div`
+export const Container = styled.div`
   margin: 20px auto;
   width: 1200px;
+`;
+
+export const List = styled.div`
+  margin-top: 20px;
 `;
