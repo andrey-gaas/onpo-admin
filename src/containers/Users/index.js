@@ -4,14 +4,13 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { usersFetch } from '../../store/AC/users';
 import {
-  Root,
+  Root, Text, Error,
+  Container, List,
+  TopContainer, Grow,
 } from './styles';
 
 function Users({ usersFetch, users }) {
   const { list, error } = users;
-
-  console.log('list', list);
-  console.log('error', error);
 
   useEffect(() => {
     usersFetch();
@@ -19,8 +18,32 @@ function Users({ usersFetch, users }) {
 
   return (
     <Root>
-      123
-    </Root>
+    {
+      list === null && !error.list &&
+      <Text>Загрузка...</Text>
+    }
+
+    {
+      error.list &&
+      <Error>{error.list}</Error>
+    }
+
+    {
+      list && list.lingth === 0 &&
+      <Text>Список пользователей пуст</Text>
+    }
+
+    {
+      list && list.length &&
+        <Container>
+          <List>
+            {
+              list.map(item => <h1 key={item.id}>{item.id}</h1>)
+            }
+          </List>
+        </Container>
+    }
+      </Root>
   );
 }
 

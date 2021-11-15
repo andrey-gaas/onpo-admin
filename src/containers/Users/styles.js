@@ -29,3 +29,11 @@ export const Container = styled.div`
 export const List = styled.div`
   margin-top: 20px;
 `;
+
+export const TopContainer = styled.div`
+  display: flex;
+`;
+
+export const Grow = styled.div`
+  flex-grow: 1;
+`;
