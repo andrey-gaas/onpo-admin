@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { usersFetch } from '../../store/AC/users';
 import {
   Root,
 } from './styles';
 
-function Users() {
+function Users({ usersFetch, users }) {
+  const { list, error } = users;
+
+  console.log('list', list);
+  console.log('error', error);
+
+  useEffect(() => {
+    usersFetch();
+  }, [usersFetch]);
 
   return (
     <Root>
@@ -12,17 +24,17 @@ function Users() {
   );
 }
 
-/* Users.propTypes = {
-  reviewsFetch: PropTypes.func.isRequired,
-  reviews:      PropTypes.object.isRequired,
-}; */
+Users.propTypes = {
+  usersFetch: PropTypes.func.isRequired,
+  users:        PropTypes.object.isRequired,
+};
 
-/* const mapStateToProps = ({ reviews }) => ({
-  reviews,
+const mapStateToProps = ({ users }) => ({
+  users,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  reviewsFetch,
-}, dispatch); */
+  usersFetch,
+}, dispatch);
 
-export default Users;
+export default connect(mapStateToProps, mapDispatchToProps)(Users);
