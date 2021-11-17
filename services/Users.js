@@ -1,19 +1,18 @@
 const ONPO = require('../repositories/ONPO');
 
 class UsersApi {
-  static get(filter = {}) {
-    return new Promise((resolve, reject) => {
-      ONPO  
-        .users
-        .find(filter)
-        .toArray((error, users) => {
-          if (error) {
-            return reject(error);
-          }
-
-          return resolve(users);
-        });
-    });
+  static async get() {
+    return await ONPO.users.aggregate([
+        {
+          '$lookup': {
+            from: 'users',
+            localField: 'user',
+            foreignField: '_id',
+            as: 'user',
+          },
+        },
+        { $unwind: "$user" }
+      ]).toArray();
   }
 
   static async getOne(filter) {
