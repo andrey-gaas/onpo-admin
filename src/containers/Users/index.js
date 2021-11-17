@@ -6,8 +6,8 @@ import { usersFetch } from '../../store/AC/users';
 import {
   Root, Text, Error,
   Container, List,
-  TopContainer, Grow,
 } from './styles';
+import User from './User';
 
 function Users({ usersFetch, users }) {
   const { list, error } = users;
@@ -38,7 +38,7 @@ function Users({ usersFetch, users }) {
         <Container>
           <List>
             {
-              list.map(item => <h1 key={item.id}>{item.id}</h1>)
+              list.map(item => <User key={item.id} data={item} />)
             }
           </List>
         </Container>
