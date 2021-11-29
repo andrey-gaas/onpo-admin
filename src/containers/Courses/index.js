@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { coursesFetch } from '../../store/AC/courses';
 import { Button } from '../../components';
+import Course from './Course';
 import {
   Root,
   Text,
@@ -49,7 +50,7 @@ function Courses({ courses, coursesFetch }) {
               </Button>
             </TopContainer>
             <List>
-              {list.map(item => <p key={item.id}>{item.title}</p>)}
+              {list.map(item => <Course key={item.id} />)}
             </List>
           </Fragment>
         /* <Container>
