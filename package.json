@@ -26,6 +26,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production node server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev:production": "cross-env NODE_ENV=production concurrently \"npm run server\" \"npm run client\"",
     "server": "cross-env NODE_ENV=development nodemon server.js",
     "client": "react-scripts start",
     "build": "react-scripts build"
