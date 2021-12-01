@@ -5,7 +5,7 @@ import { Route } from 'react-router-dom';
 
 function PrivateRoute({ auth, path, component }) {
   const url = process.env.NODE_ENV === 'production' ?
-    'https://auth.gpntbsib.ru/login?redirect_url=https://lk.onpo.gpntbsib.ru/'
+    'https://auth.gpntbsib.ru/login?redirect_url=https://onpo-admin.gpntbsib.ru/'
     : 'https://auth.gpntbsib.ru/login?redirect_url=http://localhost:3000';
 
   return auth ?
