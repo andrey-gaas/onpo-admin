@@ -41,6 +41,8 @@ export const Title = styled.h2`
 `;
 
 export const Content = styled.div`
+  max-height: 80vh;
+  overflow-y: scroll;
   padding: 20px;
 `;
 

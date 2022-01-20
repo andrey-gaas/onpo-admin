@@ -31,7 +31,7 @@ class CoursesApi {
 
   static remove(id) {
     return axios
-      .remove(`/api/courses/${id}`)
+      .delete(`/api/courses/${id}`)
       .then(response => response)
       .catch(({ response }) => ({ ...response }));
   }
